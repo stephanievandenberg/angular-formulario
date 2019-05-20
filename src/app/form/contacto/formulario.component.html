@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{createMode ? 'Create Todo' : 'Edit Todo'}}</h4>
+  <button type="button" class="cerrar" aria-label="Cerrar" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+    <div class="form-group">
+      <label for="direccion">Direccion*</label>
+      <input type="text" id="direccion" placeholder="direccion" class="form-control" formControlName="direccion" />
+      <span style="color:Red;" *ngIf="todoForm.controls['direccion'].touched && todoForm.controls['direccion'].errors?.required">Direccion
+        is required.</span>
+    </div>
+    <div class="form-group">
+        <label for="ciudad">Ciudad*</label>
+        <input type="text" id="ciudad" placeholder="Ciudad" class="form-control" formControlName="ciudad" />
+        <span style="color:Red;" *ngIf="todoForm.controls['ciudad'].touched && todoForm.controls['ciudad'].errors?.required">Ciudad
+          is required.</span>
+      </div>
+      <div class="form-group">
+          <label for="pais">Pais*</label>
+          <input type="text" id="pais" placeholder="pais" class="form-control" formControlName="pais" />
+          <span style="color:Red;" *ngIf="todoForm.controls['pais'].touched && todoForm.controls['pais'].errors?.required">Pais
+            is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="celular">Celular*</label>
+            <input type="text" id="celular" placeholder="celular" class="form-control" formControlName="celular" />
+            <span style="color:Red;" *ngIf="todoForm.controls['celular'].touched && todoForm.controls['celular'].errors?.required">Celular
+              is required.</span>
+          </div>
+        <div class="form-group">
+            <label for="contacto_emergencia">Contacto emergencia*</label>
+            <input type="text" id="contacto_emergencia" placeholder="contacto_emergencia" class="form-control" formControlName="contacto_emergencia" />
+            <span style="color:Red;" *ngIf="todoForm.controls['contacto_emergencia'].touched && todoForm.controls['contacto_emergencia'].errors?.required">Contacto emergencia
+              is required.</span>
+          </div>
+
+          <div class="form-group">
+              <label for="numero_contacto">Numero contacto*</label>
+              <input type="text" id="numero_contacto" placeholder="numero_contacto" class="form-control" formControlName="numero_contacto" />
+              <span style="color:Red;" *ngIf="todoForm.controls['numero_contacto'].touched && todoForm.controls['numero_contacto'].errors?.required">Numero contacto 
+                is required.</span>
+            </div>
+          
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+  <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Guardar</button>
+  <button class="btn btn-primary" (click)="clickSiguiente()">Siguiente</button>
+</div>
+

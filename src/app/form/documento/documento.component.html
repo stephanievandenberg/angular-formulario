@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{createMode ? 'Create Todo' : 'Edit Todo'}}</h4>
+    <button type="button" class="cerrar" aria-label="Cerrar" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+      <div class="form-group">
+        <label for="tipo_documento">Tipo documento*</label>
+        <input type="text" id="tipo_documento" placeholder="Tipo_documento" class="form-control" formControlName="tipo_documento" />
+        <span style="color:Red;" *ngIf="todoForm.controls['tipo_documento'].touched && todoForm.controls['tipo_documento'].errors?.required">Tipo documento
+          is required.</span>
+      </div>
+      <div class="form-group">
+          <label for="documento">Numero documento*</label>
+          <input type="text" id="documento" placeholder="documento" class="form-control" formControlName="documento" />
+          <span style="color:Red;" *ngIf="todoForm.controls['documento'].touched && todoForm.controls['documento'].errors?.required">Numero documento
+            is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="fecha_expedicion">Fecha expedicion*</label>
+            <input type="text" id="fecha_expedicion" placeholder="fecha_expedicion" class="form-control" formControlName="fecha_expedicion" />
+            <span style="color:Red;" *ngIf="todoForm.controls['fecha_expedicion'].touched && todoForm.controls['fecha_expedicion'].errors?.required">Fecha expedicion
+              is required.</span>
+          </div>
+          <div class="form-group">
+              <label for="lugar_expedicion">Lugar expedicion*</label>
+              <input type="text" id="lugar_expedicion" placeholder="lugar_expedicion" class="form-control" formControlName="lugar_expedicion" />
+              <span style="color:Red;" *ngIf="todoForm.controls['lugar_expedicion'].touched && todoForm.controls['lugar_expedicion'].errors?.required">Lugar expedicion
+                is required.</span>
+            </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Guardar</button>
+    <button class="btn btn-primary" (click)="clickSiguiente()">Siguiente</button>
+  </div>
+  
+  

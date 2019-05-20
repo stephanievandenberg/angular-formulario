@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{createMode ? 'Create Todo' : 'Edit Todo'}}</h4>
+  <button type="button" class="cerrar" aria-label="Cerrar" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+    <div class="form-group">
+      <label for="apellido">Apellido*</label>
+      <input type="text" id="apellido" placeholder="Apellido" class="form-control" formControlName="apellido" />
+      <span style="color:Red;" *ngIf="todoForm.controls['apellido'].touched && todoForm.controls['apellido'].errors?.required">Apellido
+        is required.</span>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre*</label>
+        <input type="text" id="nombre" placeholder="Nombre" class="form-control" formControlName="nombre" />
+        <span style="color:Red;" *ngIf="todoForm.controls['nombre'].touched && todoForm.controls['nombre'].errors?.required">Nombre
+          is required.</span>
+      </div>
+      <div class="form-group">
+          <label for="email">e-mail*</label>
+          <input type="text" id="email" placeholder="email" class="form-control" formControlName="email" />
+          <span style="color:Red;" *ngIf="todoForm.controls['email'].touched && todoForm.controls['email'].errors?.required">e-mail
+            is required.</span>
+        </div>
+      <div class="form-group">
+          <label for="usuario">Usuario*</label>
+          <input type="text" id="usuario" placeholder="Usuario" class="form-control" formControlName="usuario" />
+          <span style="color:Red;" *ngIf="todoForm.controls['usuario'].touched && todoForm.controls['usuario'].errors?.required">Usuario
+            is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="contrasena">Contrasena*</label>
+            <input type="text" id="contrasena" placeholder="Contrasena" class="form-control" formControlName="contrasena" />
+            <span style="color:Red;" *ngIf="todoForm.controls['contrasena'].touched && todoForm.controls['usuario'].errors?.required">Contrasena
+              is required.</span>
+          </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+  <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Guardar</button>
+  <button class="btn btn-primary" (click)="clickSiguiente()">Siguiente</button>
+</div>
+
